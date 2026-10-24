@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aurora Glamping — Duerme bajo las estrellas</title>
+<title>Aurora Glamping — Glamping en Colombia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;800&family=DM+Mono&family=DM+Sans&display=swap" rel="stylesheet">
 <style>
@@ -49,7 +49,7 @@ background:radial-gradient(40% 35% at 20% 30%,rgba(25,230,140,.65),transparent 7
 .dest h3{font-size:26px;margin:10px 0 6px;line-height:1.1}
 .dest .pr{display:flex;justify-content:space-between;align-items:center;margin-top:15px}
 .chip{display:inline-block;padding:4px 10px;border-radius:35px;color:#fff;font:400 11px 'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase}
-.mist{background:var(--mist)}
+.mist{background:var(--mist);background-image:repeating-radial-gradient(circle at 88% 12%,transparent 0 26px,rgba(127,127,127,.14) 27px 28px),repeating-radial-gradient(circle at 6% 92%,transparent 0 30px,rgba(127,127,127,.1) 31px 32px)}
 .book{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:860px){.book{grid-template-columns:1fr}}
 .card{background:var(--cream);border-radius:20px;padding:40px}
@@ -82,12 +82,47 @@ input[type=date]{background:#fff;color:#000;border:1px solid var(--gray);border-
 .final h2{font-size:clamp(36px,7vw,80px);max-width:800px;margin:15px auto 30px}
 footer{padding:30px 0 40px;color:var(--gray);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .toast{margin-top:12px;min-height:20px}
+.toast.show{animation:tin .5s}@keyframes tin{from{opacity:0;transform:translateY(8px)}}
+.rv{opacity:0;transform:translateY(34px) scale(.97);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.dest{position:relative;will-change:transform}
+.dest svg{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.dest:hover svg{transform:scale(1.08)}
+.dest:hover{box-shadow:0 18px 40px -14px var(--c)}
+.dest.hit{animation:hit .55s}@keyframes hit{40%{transform:scale(.95)}100%{transform:scale(1)}}
+.btn,.opt,.step button{position:relative;overflow:hidden}
+.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+.hero .btn:not(.sec),.final .btn{animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(254,58,58,.55)}70%{box-shadow:0 0 0 18px rgba(254,58,58,0)}100%{box-shadow:0 0 0 0 rgba(254,58,58,0)}}
+.opt.on{animation:ppop .35s}@keyframes ppop{50%{transform:scale(1.12)}}
+.ticket.pop{animation:tpop .45s}@keyframes tpop{0%{transform:scale(.985);filter:brightness(1.15)}100%{transform:none;filter:none}}
+.q{transition:transform .25s}.q:hover{transform:translateY(-6px) rotate(-.6deg)}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:30;background:linear-gradient(90deg,#19e68c,#3ea6ff,#ff3d81,#ffb02e)}
+@media(prefers-reduced-motion:reduce){.hero .btn,.final .btn{animation:none}}
+.nite{background:var(--dark);color:#fff;position:relative;overflow:hidden;background-image:radial-gradient(40% 50% at 10% 0%,rgba(91,61,245,.35),transparent 70%),radial-gradient(40% 50% at 95% 100%,rgba(25,230,140,.25),transparent 70%)}
+.nite .head p{color:rgba(255,255,255,.75)}
+.extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
+.ext{position:relative;display:flex;gap:14px;align-items:flex-start;text-align:left;font:inherit;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:20px;cursor:pointer;transition:transform .2s,background .3s,border-color .3s}
+.ext:hover{transform:translateY(-4px);border-color:var(--c1)}
+.ext .ic{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:rgba(255,255,255,.12)}
+.ext .et{display:flex;flex-direction:column;gap:4px;flex:1}
+.ext .et span{font-size:14px;opacity:.8}
+.ext .ep{font:800 16px 'Bricolage Grotesque',sans-serif;white-space:nowrap;text-align:right}
+.ext .ep small{display:block;font:400 10px 'DM Mono',monospace;letter-spacing:.04em;text-transform:uppercase;opacity:.75}
+.ext .ck{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-size:13px;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.ext.on{background:linear-gradient(135deg,var(--c1),var(--c2));border-color:transparent}
+.ext.on .ck{transform:scale(1)}
+.note{margin-top:24px}
+.note input{width:100%;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:12px 15px;font:400 16px 'DM Sans',sans-serif}
+.note input::placeholder{color:rgba(255,255,255,.6)}
+.note input:focus{outline:0;border-color:#fff}
 </style>
 </head>
 <body>
 <nav>
   <a class="logo" href="#top"><i></i>AURORA GLAMPING</a>
-  <a class="btn" href="#planea">Planea tu viaje</a>
+  <a class="btn" href="#planea">Reservar</a>
 </nav>
 
 <header class="hero" id="top">
@@ -96,21 +131,27 @@ footer{padding:30px 0 40px;color:var(--gray);display:flex;justify-content:space-
   <svg class="patch" style="right:9%;top:22%;animation-delay:-2s" viewBox="0 0 92 110"><path d="M6 6h80v62c0 22-30 34-40 38C36 102 6 90 6 68z" fill="#4a7fc5" stroke="#fff" stroke-width="2"/><circle cx="46" cy="64" r="18" fill="none" stroke="#fff" stroke-width="2"/><path d="M28 64h36M46 46v36" stroke="#fff" stroke-width="2"/><text x="46" y="32" fill="#fff" font-size="10" text-anchor="middle" font-family="DM Sans">GUATAVITA</text></svg>
   <svg class="patch" style="right:18%;bottom:24%;animation-delay:-4s" viewBox="0 0 92 110"><path d="M6 6h80v62c0 22-30 34-40 38C36 102 6 90 6 68z" fill="none" stroke="#fff" stroke-width="2"/><path d="M46 84c-14-4-16-20-4-30 0 8 6 8 6 14 4-4 6-10 4-16 12 8 12 28-6 32z" fill="none" stroke="#fff" stroke-width="2"/><text x="46" y="32" fill="#fff" font-size="10" text-anchor="middle" font-family="DM Sans">TATACOA</text></svg>
   <div class="wrap">
-    <div class="mono">Glamping en Colombia · Demo</div>
-    <h1>Duerme bajo las auroras.</h1>
-    <p>Domos, tiendas de lujo y cabañas colgantes en cuatro rincones de Colombia. Tú eliges el paisaje, nosotros armamos el campamento.</p>
+    <div class="mono">Glamping · Colombia</div>
+    <h1>Duerme bajo las estrellas.</h1>
+    <p>Cuatro destinos, cero logística: llegas y el campamento ya está armado.</p>
     <div class="cta-row"><a class="btn" href="#planea">Planea tu viaje</a><a class="btn sec" href="#destinos">Ver destinos</a></div>
   </div>
   <svg class="ridge" viewBox="0 0 1440 140" preserveAspectRatio="none"><path d="M0 140V80l180-50 150 60 200-70 220 80 190-60 220 70 280-50v90z" fill="var(--bg)"/></svg>
 </header>
 
 <section id="destinos"><div class="wrap">
-  <div class="head"><div class="mono">Escaparate de destinos</div><h2>Cuatro paisajes, cuatro colores.</h2><p>Cada destino tiene su propia luz. Toca uno para armar tu reserva.</p></div>
+  <div class="head"><div class="mono">01 · Destinos</div><h2>Elige tu paisaje.</h2><p>Toca uno y lo llevamos directo a tu reserva.</p></div>
   <div class="grid" id="dests"></div>
 </div></section>
 
+<section class="nite" id="extras-s"><div class="wrap">
+  <div class="head"><div class="mono">02 · Extras</div><h2>Hazlo a tu manera.</h2><p>Suma comida, decoración o experiencias. Cada extra se añade al total de tu reserva.</p></div>
+  <div class="extras" id="extras"></div>
+  <div class="note"><input id="xnote" type="text" aria-label="Otra petición" placeholder="¿Algo más? Cuéntanos tu idea: sorpresa, alergias, hora de llegada…"></div>
+</div></section>
+
 <section class="mist" id="planea"><div class="wrap">
-  <div class="head"><div class="mono">Vista previa de reserva</div><h2>Arma tu escapada.</h2><p>Esto es una demo: ajusta los datos y mira cómo se calcula tu estadía.</p></div>
+  <div class="head"><div class="mono">03 · Tu reserva</div><h2>Arma tu escapada.</h2><p>Cambia la fecha, las noches o los huéspedes y mira el precio al instante.</p></div>
   <div class="book">
     <div class="card">
       <div class="field"><label class="mono">1 · Destino</label><div class="opts" id="opts"></div></div>
@@ -122,7 +163,7 @@ footer{padding:30px 0 40px;color:var(--gray);display:flex;justify-content:space-
     </div>
     <div class="ticket" id="ticket">
       <div><div class="mono" id="tReg"></div><h3 id="tName"></h3><div id="tDesc"></div>
-        <dl><dt>Llegada</dt><dd id="tDate"></dd><dt>Estadía</dt><dd id="tStay"></dd><dt>Subtotal</dt><dd id="tSub"></dd><dt>Desayuno y fogata</dt><dd>Incluido</dd></dl>
+        <dl><dt>Llegada</dt><dd id="tDate"></dd><dt>Estadía</dt><dd id="tStay"></dd><dt>Por noche</dt><dd id="tSub"></dd><dt>Extras</dt><dd id="tEx"></dd><dt>Incluye</dt><dd>Desayuno, fogata y cobijas</dd></dl>
       </div>
       <div><div class="mono">Total estimado</div><div class="total" id="tTot"></div>
         <button class="btn" style="width:100%;margin-top:14px" id="go">Reservar mi campamento</button><div class="toast" id="toast" role="status"></div></div>
@@ -131,52 +172,65 @@ footer{padding:30px 0 40px;color:var(--gray);display:flex;justify-content:space-
 </div></section>
 
 <section><div class="wrap">
-  <div class="head"><div class="mono">Testimonios de viajeros</div><h2>Ellos ya durmieron entre estrellas.</h2></div>
+  <div class="head"><div class="mono">04 · Viajeros</div><h2>Lo que cuentan al volver.</h2></div>
   <div class="quotes" id="quotes"></div>
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
   <div class="final"><div class="aurora"></div><div>
-    <div class="mono">Tu campamento te espera</div>
-    <h2>¿Listo para dormir bajo las estrellas?</h2>
-    <a class="btn" href="#planea">Planea tu viaje</a>
+    <div class="mono">Tu escapada empieza aquí</div>
+    <h2>Tú pones la fecha, nosotros la fogata.</h2>
+    <a class="btn" href="#planea">Quiero mi campamento</a>
   </div></div>
-  <footer><span>© 2026 Aurora Glamping · Página de demostración</span><span class="mono">Hecha con NexoDigital</span></footer>
+  <footer><span>© 2026 Aurora Glamping</span><span class="mono">Demo hecha por NexoDigital</span></footer>
 </div></section>
 
 <script>
 var D=[
-{n:"Salento",r:"Eje Cafetero",c1:"#19e68c",c2:"#0b6e4f",p:480000,d:"Domo de cristal entre palmas de cera y cafetales.",t:"Cafetal · Bosque"},
-{n:"Villa de Leyva",r:"Boyacá",c1:"#ffb02e",c2:"#ff5e3a",p:420000,d:"Tienda safari con vista a los cielos de piedra.",t:"Desierto · Colonial"},
-{n:"Desierto de la Tatacoa",r:"Huila",c1:"#ff3d81",c2:"#7a1fa2",p:390000,d:"Cabaña bajo la Vía Láctea más limpia del país.",t:"Astronomía · Desierto"},
-{n:"Guatavita",r:"Cundinamarca",c1:"#3ea6ff",c2:"#5b3df5",p:450000,d:"Burbuja panorámica frente al embalse y la niebla.",t:"Lago · Montaña"}];
+{n:"Salento",r:"Eje Cafetero",c1:"#19e68c",c2:"#0b6e4f",p:480000,d:"Domo de cristal entre palmas de cera, con café de la finca al despertar.",t:"Café · Bosque"},
+{n:"Villa de Leyva",r:"Boyacá",c1:"#ffb02e",c2:"#ff5e3a",p:420000,d:"Tienda safari en el valle, con paseo en bici al atardecer.",t:"Valle · Pueblo"},
+{n:"Desierto de la Tatacoa",r:"Huila",c1:"#ff3d81",c2:"#7a1fa2",p:390000,d:"Cabaña con telescopio para ver el cielo sin luces de ciudad.",t:"Estrellas · Desierto"},
+{n:"Guatavita",r:"Cundinamarca",c1:"#3ea6ff",c2:"#5b3df5",p:450000,d:"Burbuja panorámica frente al embalse, con niebla al amanecer.",t:"Lago · Montaña"}];
 var Q=[
-{n:"Camila R.",c:0,t:"Desperté con neblina entre los cafetales y un desayuno en la cama. Fue el mejor fin de semana del año."},
-{n:"Andrés M.",c:2,t:"Nunca había visto tantas estrellas. El domo en la Tatacoa se siente como otro planeta."},
-{n:"Laura y Sofía",c:3,t:"Todo estaba listo cuando llegamos: fogata, cobijas y chocolate caliente. Volveremos pronto."}];
+{n:"Camila R.",c:0,s:"Salento · 3 noches",t:"Abrí la cortina y el cafetal estaba entre la neblina. El desayuno llegó sin pedirlo."},
+{n:"Andrés M.",c:2,s:"Tatacoa · 2 noches",t:"Con el telescopio encontré Saturno. Mi hijo todavía lo cuenta en el colegio."},
+{n:"Laura y Sofía",c:3,s:"Guatavita · 2 noches",t:"Llegamos tarde y la fogata ya estaba prendida. Cero filas, cero afán."}];
 var cop=new Intl.NumberFormat("es-CO",{style:"currency",currency:"COP",maximumFractionDigits:0});
 function scene(x,i){return '<svg viewBox="0 0 400 220"><defs><linearGradient id="g'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+x.c1+'"/><stop offset="1" stop-color="'+x.c2+'"/></linearGradient></defs><rect width="400" height="220" fill="url(#g'+i+')"/><circle cx="320" cy="50" r="22" fill="#fff" opacity=".85"/><path d="M0 170l70-60 60 40 80-70 90 80 100-50v110H0z" fill="#000" opacity=".28"/><path d="M0 195l90-40 80 30 100-45 130 50v30H0z" fill="#000" opacity=".5"/><path d="M165 200l35-52 35 52z" fill="#fff"/><path d="M190 200l10-24 10 24z" fill="'+x.c1+'"/></svg>'}
-var st={i:0,n:2,g:2},dd=document.getElementById("dests"),op=document.getElementById("opts");
+var E=[
+{i:"🍽️",n:"Cena bajo las estrellas",d:"Menú de tres tiempos servido junto a tu fogata.",p:180000,k:"r",u:"por reserva"},
+{i:"🥞",n:"Desayuno en la cama",d:"Frutas, arepas, huevos y café de la región.",p:45000,k:"p",u:"por persona"},
+{i:"🍢",n:"Parrillada para compartir",d:"Carnes, vegetales y bebidas frías para el grupo.",p:120000,k:"r",u:"por reserva"},
+{i:"🎈",n:"Decoración de celebración",d:"Globos, letrero y velas para cumpleaños o aniversario.",p:130000,k:"r",u:"por reserva"},
+{i:"🌹",n:"Ambiente romántico",d:"Pétalos, luces cálidas y velas dentro de tu domo.",p:150000,k:"r",u:"por reserva"},
+{i:"💆",n:"Masaje en pareja",d:"Sesión de 60 minutos en tu propio campamento.",p:260000,k:"r",u:"por reserva"},
+{i:"📸",n:"Sesión de fotos",d:"Una hora con fotógrafo y 30 fotos editadas.",p:280000,k:"r",u:"por reserva"},
+{i:"🐶",n:"Tu mascota también viene",d:"Cama, plato y snacks de bienvenida.",p:30000,k:"n",u:"por noche"}];
+function exTotal(){var t=0;st.x.forEach(function(i){var e=E[i];t+=e.p*(e.k=="p"?st.g:e.k=="n"?st.n:1)});return t}
+var st={i:0,n:2,g:2,x:[]},dd=document.getElementById("dests"),op=document.getElementById("opts");
 D.forEach(function(x,i){
- var b=document.createElement("button");b.className="dest";
+ var b=document.createElement("button");b.className="dest";b.style.setProperty("--c",x.c1);
  b.innerHTML=scene(x,i)+'<div class="b"><span class="chip" style="background:'+x.c2+'">'+x.r+'</span><h3>'+x.n+'</h3><div>'+x.d+'</div><div class="pr"><span class="mono">'+x.t+'</span><b>'+cop.format(x.p)+'</b></div></div>';
- b.onclick=function(){st.i=i;upd();document.getElementById("planea").scrollIntoView()};dd.appendChild(b);
+ b.onclick=function(e){st.i=i;upd();burst(e.clientX,e.clientY,[x.c1,x.c2,"#fff"]);b.classList.remove("hit");void b.offsetWidth;b.classList.add("hit");setTimeout(function(){document.getElementById("extras-s").scrollIntoView()},550)};dd.appendChild(b);
  var o=document.createElement("button");o.className="opt";o.textContent=x.n;o.style.setProperty("--c",x.c2);o.onclick=function(){st.i=i;upd()};op.appendChild(o)});
+var exg=document.getElementById("extras");
+E.forEach(function(e,i){var b=document.createElement("button");b.className="ext";b.innerHTML='<span class="ic">'+e.i+'</span><span class="et"><b>'+e.n+'</b><span>'+e.d+'</span></span><span class="ep">+'+cop.format(e.p)+'<small>'+e.u+'</small></span><span class="ck">✓</span>';
+b.onclick=function(ev){var k=st.x.indexOf(i);if(k<0){st.x.push(i);b.classList.add("on");burst(ev.clientX,ev.clientY,[D[st.i].c1,D[st.i].c2,"#fff"],14)}else{st.x.splice(k,1);b.classList.remove("on")}upd()};exg.appendChild(b)});
 var qs=document.getElementById("quotes");
-Q.forEach(function(q){var x=D[q.c];qs.insertAdjacentHTML("beforeend",'<div class="q" style="--c1:'+x.c1+';--c2:'+x.c2+'"><div class="mono">★★★★★ · '+x.n+'</div><p>“'+q.t+'”</p><div class="who"><div class="av">'+q.n[0]+'</div><b>'+q.n+'</b></div></div>')});
+Q.forEach(function(q){var x=D[q.c];qs.insertAdjacentHTML("beforeend",'<div class="q" style="--c1:'+x.c1+';--c2:'+x.c2+'"><div class="mono">★★★★★</div><p>“'+q.t+'”</p><div class="who"><div class="av">'+q.n[0]+'</div><div><b>'+q.n+'</b><div class="mono" style="color:var(--gray);margin-top:3px">'+q.s+'</div></div></div></div>')});
 var dt=document.getElementById("d"),t=new Date();t.setDate(t.getDate()+30);dt.value=t.toISOString().slice(0,10);
 function $(i){return document.getElementById(i)}
-function upd(){var x=D[st.i],sub=x.p*st.n*Math.ceil(st.g/2);
+function upd(){var x=D[st.i],sub=x.p*st.n*Math.ceil(st.g/2),ex=exTotal();
  var o=op.children;for(var k=0;k<o.length;k++)o[k].classList.toggle("on",k===st.i);
- var tk=$("ticket");tk.style.setProperty("--c1",x.c1);tk.style.setProperty("--c2",x.c2);
+ var tk=$("ticket");tk.classList.remove("pop");void tk.offsetWidth;tk.classList.add("pop");tk.style.setProperty("--c1",x.c1);tk.style.setProperty("--c2",x.c2);
  $("tReg").textContent=x.r;$("tName").textContent=x.n;$("tDesc").textContent=x.d;
  var f=dt.value?new Date(dt.value+"T12:00:00").toLocaleDateString("es-CO",{day:"numeric",month:"long"}):"Por definir";
  $("tDate").textContent=f;$("tStay").textContent=st.n+(st.n>1?" noches":" noche")+" · "+st.g+(st.g>1?" personas":" persona");
- $("tSub").textContent=cop.format(sub);$("tTot").textContent=cop.format(sub);$("nn").textContent=st.n;$("gn").textContent=st.g}
+ $("tSub").textContent=cop.format(x.p*Math.ceil(st.g/2));tween($("tTot"),sub+ex);$("tEx").textContent=st.x.length?st.x.length+" · "+cop.format(ex):"Ninguno";var xs=$("extras-s");xs.style.setProperty("--c1",x.c1);xs.style.setProperty("--c2",x.c2);$("nn").textContent=st.n;$("gn").textContent=st.g}
 $("nm").onclick=function(){st.n=Math.max(1,st.n-1);upd()};$("np").onclick=function(){st.n=Math.min(14,st.n+1);upd()};
 $("gm").onclick=function(){st.g=Math.max(1,st.g-1);upd()};$("gp").onclick=function(){st.g=Math.min(8,st.g+1);upd()};
 dt.onchange=upd;
-$("go").onclick=function(){$("toast").textContent="¡Listo! Esto es una demo: aquí iría el pago seguro."};
+$("go").onclick=function(){var x=D[st.i],b=this,r=b.getBoundingClientRect(),tt=$("toast");burst(r.left+r.width/2,r.top,[x.c1,x.c2,"#fff","#fe3a3a"],46);b.textContent="✓ ¡Campamento apartado!";tt.textContent="Reserva de ejemplo: aquí se abriría el pago seguro.";tt.classList.remove("show");void tt.offsetWidth;tt.classList.add("show");setTimeout(function(){b.textContent="Reservar mi campamento"},2600)};
 upd();
 (function(){var c=$("sky"),g=c.getContext("2d"),S=[],H=[],w=0,h=0,vis=true,dpr=Math.min(window.devicePixelRatio||1,2),rm=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
 function size(){var r=c.parentNode.getBoundingClientRect();w=r.width;h=r.height;c.width=w*dpr;c.height=h*dpr;g.setTransform(dpr,0,0,dpr,0,0);var n=Math.min(260,Math.round(w*h/4500));S=[];for(var i=0;i<n;i++)S.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4+.3,v:Math.random()*.18+.03,t:Math.random()*6.28,s:Math.random()*.035+.01});if(rm)draw()}
@@ -190,6 +244,19 @@ function loop(){if(vis){if(Math.random()<.007&&H.length<2)H.push({x:w*(.35+Math.
 size();window.addEventListener("resize",size);
 if("IntersectionObserver" in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(c.parentNode);
 if(!rm)requestAnimationFrame(loop)})();
+var RM=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+function burst(x,y,cols,n){if(RM)return;x=x||innerWidth/2;y=y||innerHeight/2;n=n||26;for(var i=0;i<n;i++){var p=document.createElement("i"),s=4+Math.random()*7,a=Math.random()*6.283,d=50+Math.random()*130,c=cols[i%cols.length];
+p.style.cssText="position:fixed;left:"+x+"px;top:"+y+"px;width:"+s+"px;height:"+s+"px;pointer-events:none;z-index:50;background:"+c+";border-radius:"+(i%3?"50%":"2px")+";box-shadow:0 0 8px "+c;
+document.body.appendChild(p);
+p.animate([{transform:"translate(0,0) scale(1) rotate(0)",opacity:1},{transform:"translate("+Math.cos(a)*d+"px,"+(Math.sin(a)*d+60)+"px) scale(.2) rotate("+(Math.random()*540)+"deg)",opacity:0}],{duration:800+Math.random()*500,easing:"cubic-bezier(.15,.7,.3,1)"}).onfinish=(function(q){return function(){q.remove()}})(p)}}
+function tween(el,to){var from=el._cur||0,id=el._id=(el._id||0)+1,t0=performance.now();if(RM){el.textContent=cop.format(to);el._cur=to;return}
+function f(t){if(el._id!==id)return;var k=Math.min(1,(t-t0)/600),v=Math.round(from+(to-from)*(1-Math.pow(1-k,3)));el._cur=v;el.textContent=cop.format(v);if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+document.addEventListener("click",function(e){var b=e.target.closest(".btn,.opt,.step button");if(!b||RM)return;var r=b.getBoundingClientRect(),s=Math.max(r.width,r.height)*2,p=document.createElement("span");p.className="rip";p.style.cssText="width:"+s+"px;height:"+s+"px;left:"+(e.clientX-r.left-s/2)+"px;top:"+(e.clientY-r.top-s/2)+"px";b.appendChild(p);setTimeout(function(){p.remove()},650)});
+if(!RM&&window.matchMedia("(hover:hover)").matches)document.querySelectorAll(".dest").forEach(function(c){c.addEventListener("mousemove",function(e){var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.style.transition="transform .1s";c.style.transform="perspective(800px) rotateX("+(-py*9)+"deg) rotateY("+(px*11)+"deg) translateY(-6px)"});c.addEventListener("mouseleave",function(){c.style.transition="transform .4s";c.style.transform=""})});
+if(!RM&&"IntersectionObserver" in window){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(!e.isIntersecting)return;var t=e.target;t.classList.add("in");io.unobserve(t);setTimeout(function(){t.classList.remove("rv","in")},1100+parseFloat(t.style.getPropertyValue("--d")||0)*1000)})},{threshold:.15});
+document.querySelectorAll(".head,.dest,.ext,.card,.ticket,.q,.final").forEach(function(t){var k=Array.prototype.indexOf.call(t.parentNode.children,t);t.style.setProperty("--d",(k*.1)+"s");t.classList.add("rv");io.observe(t)})}
+var pg=document.createElement("div");pg.id="prog";document.body.appendChild(pg);
+addEventListener("scroll",function(){var h=document.documentElement;pg.style.width=(h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight)*100)+"%"},{passive:true});
 </script>
 </body>
 </html>
